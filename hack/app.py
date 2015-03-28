@@ -42,6 +42,7 @@ def hello(name=None):
           [ 'positive', positivity_percentage ],
           [ 'negative', negativity_percentage ]
         ]
+    )
 
 
     return render_template(
