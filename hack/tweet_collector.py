@@ -1,6 +1,7 @@
 import twitter
 import os
 import time
+import json
 
 
 class Collector(object):
@@ -23,4 +24,4 @@ class Collector(object):
             raise
 
         for tweet in atmosphere:
-            print tweet['coordinates'], tweet['text']
+            yield tweet

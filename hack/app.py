@@ -1,15 +1,27 @@
 from flask import Flask
 from flask import render_template
-# import twitter
 import random
+import threading
+import os
+
+import tweet_collector
+
 app = Flask(__name__)
 
 app.debug = True
 
-# api = twitter.Api(consumer_key='consumer_key',
-#                   consumer_secret='consumer_secret',
-#                   access_token_key='access_token',
-#                   access_token_secret='access_token_secret')
+
+class ProcessingThread(threading.Thread):
+
+    def __init__(self, search_term):
+        self.search_term = search_term
+
+    def run(self):
+        c = tweet_collector.Collect()
+        c.connect()
+        for tweet in c.stream(self.search_term):
+            pass
+
 
 @app.route('/')
 def hello(name=None):
@@ -17,3 +29,7 @@ def hello(name=None):
 
 if __name__ == '__main__':
     app.run()
+
+
+if os.environ['WE_ARE_LIVE']:
+    pt = ProcessingThread('transgender')
