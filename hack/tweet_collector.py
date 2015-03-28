@@ -54,6 +54,7 @@ class ProcessingThread(threading.Thread):
             logger.debug("%s -- %s", tweet['text'], ret_val)
 
             positivity.append(ret_val)
+            print positivity
 
 
 class Collector(object):

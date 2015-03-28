@@ -39,8 +39,10 @@ def hello(name=None):
 
     evalution_json = json.dumps(
         [
-            {'positive': positivity_percentage,
-                'negative': negativity_percentage}
+            {
+                'positive': positivity_percentage,
+                'negative': negativity_percentage
+            }
         ]
     )
 
