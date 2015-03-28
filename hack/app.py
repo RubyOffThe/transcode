@@ -4,8 +4,15 @@ from textblob import TextBlob
 import threading
 import os
 import json
+import logging
+import sys
 
 import tweet_collector
+
+logger = logging.getLogger(__name__)
+stdout_handler = logging.StreamHandler(sys.stdout)
+logger.addHandler(stdout_handler)
+
 
 app = Flask(__name__)
 
@@ -49,7 +56,7 @@ class ProcessingThread(threading.Thread):
                     total_positivity += value
 
                 ret_val = total_positivity/len(average_positivity)
-
+                logger.debug("%s -- %s", tweet['text'], ret_val)
 
                 positivity.append(ret_val)
 
@@ -77,7 +84,7 @@ def hello(name=None):
         ]
     )
 
-    return render_template('hello.html', sentiment=evalution_json  )
+    return render_template('hello.html', sentiment=evalution_json)
 
 
 if __name__ == '__main__':
