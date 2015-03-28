@@ -1,3 +1,7 @@
 # Virtual environment folder (AdituV)
 
 venv/*
+
+
+# Emacs
+*.*~
