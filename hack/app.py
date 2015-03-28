@@ -61,7 +61,7 @@ def hello(name=None):
         [
             {'positive': positivity_percentage,
                 'negative': negativity_percentage}
-        ], separators=(',')
+        ]
     )
 
     return render_template('hello.html', sentiment=evalution_json  )
