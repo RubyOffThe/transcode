@@ -43,7 +43,9 @@ def hello(name=None):
           [ 'negative', negativity_percentage ]
         ]
 
-    return render_template('hello.html', sentiment=evalution_json)
+
+    return render_template(
+        'hello.html', positive=positivity_percentage, sentiment=evalution_json)
 
 
 if __name__ == '__main__':
