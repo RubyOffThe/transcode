@@ -14,6 +14,10 @@ body{
 	font-family:'adam.cg_proregular', sans-serif;
 }
 
+#positiveNum{
+display:none;
+}
+
 button{
 	background-color:#5BCEFa;
 	color:white;

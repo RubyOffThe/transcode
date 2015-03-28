@@ -54,5 +54,5 @@ if __name__ == '__main__':
 
 
 if os.environ.get('WE_ARE_LIVE'):
-    pt = ProcessingThread('trans')
+    pt = ProcessingThread('transgender tranny transexual')
     pt.start()
