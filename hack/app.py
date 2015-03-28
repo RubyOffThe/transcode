@@ -50,7 +50,8 @@ def hello(name=None):
     for value in positivity:
         global_average_positivity += value
 
-    global_average_positivity = global_average_positivity/len(positivity)
+    if len(positivity):
+        global_average_positivity = global_average_positivity/len(positivity)
 
     positivity_percentage = (global_average_positivity+1) * 50 #add one then its from 0-2 then multiple by 50 to get a percentage
 
