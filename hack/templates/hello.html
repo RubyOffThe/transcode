@@ -1,5 +1,6 @@
 <html>
-   <body>
+<title>Trans Sentiment</title>
+   <body class="bird-background">
       <link rel="stylesheet" type="text/css" href="/static/bootstrap.css">
       <link rel="stylesheet" type="text/css" href="/static/style2.css">
       <script src="/static/bootstrap.min.js"></script>
@@ -15,16 +16,21 @@
          </h1>
       </div>
       <div class="row" style="display:none">
-         <div class = "col-xs-12 ">
-                  <h1 style="font-size: 2000%;">100%</h1>
-         </div>
+         <!-- <div class = "col-xs-12 ">
+               <img src="/static/TransBird.png"/>
+         </div> -->
       </div>
 
       <!--Dialog Divs-->
-      <div id="centreFloater" class="aboutEles" style="display:none"></div>
-      <div id="about" class="aboutEles" style="display:none">
-         Made in one day at TransCode in London
-         <button id="closeAbout" onclick="hideAbout();">Ok</button>
+      <div id="aboutWrapper">
+         <div id="centreFloater" class="aboutEles" xstyle="display:none"></div>
+         <div id="about" class="aboutEles" xstyle="display:none">
+            <span>Made in one day at TransCode in London</span>
+            <button id="closeAbout" onclick="hideAbout();">Ok</button>
+         </div>
       </div>
+
+      <!--about button-->
+      <span onclick="showAbout();" id="openAboutText">About</span>
    </body>
 </html>

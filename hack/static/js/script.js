@@ -1,9 +1,9 @@
 function showAbout(){
-	$(".aboutEles").show();
+	$("#aboutWrapper").show();
 }
 
 function hideAbout(){
-	$(".aboutEles").hide();
+	$("#aboutWrapper").hide();
 }
 
 
@@ -14,7 +14,7 @@ function splashBtnClick(){
 		titleDiv.removeClass("splash")
 		$("#splashBtn").hide();
 		
-		$("#title-element, .row").show();
+		$("#title-element, .row, #openAboutText").show();
 		// .queue(function(){titleDiv.fadeIn();}
 		// 	);
 		})
