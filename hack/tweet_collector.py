@@ -1,7 +1,6 @@
 import twitter
 import os
 import time
-import json
 
 
 class Collector(object):

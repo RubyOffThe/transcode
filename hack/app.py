@@ -57,5 +57,5 @@ if __name__ == '__main__':
     app.run()
 
 
-if os.environ['WE_ARE_LIVE']:
+if os.environ.get('WE_ARE_LIVE'):
     pt = ProcessingThread('transgender')
