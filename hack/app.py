@@ -20,12 +20,24 @@ class ProcessingThread(threading.Thread):
     def __init__(self, search_term):
         self.search_term = search_term
 
+    def remove_non_ascii(tweet_text):
+    clean_tweet = re.sub(r'[^\x00-\x7f]+', '', tweet_text)
+    return clean_tweet
+
+    def remove_punctuation(tweet_text):
+        clean_tweet = re.sub('[%s]' % re.escape('!"$%&\'()*+,-./:;<=>?[\\]^_`{|}~'), '', tweet_text)
+        return clean_tweet
+
     def run(self):
         global positivity
         c = tweet_collector.Collect()
         c.connect()
         for tweet in c.stream(self.search_term):
-                blob = TextBlob(tweet["text"])
+                text =tweet["text"]
+                text = remove_non_ascii(text)
+                text = remove_punctuation(text) 
+
+                blob = TextBlob(text)
 
                 average_positivity = []
                 total_positivity = 0
@@ -46,6 +58,7 @@ class ProcessingThread(threading.Thread):
 def hello(name=None):
     global positivity
     global global_average_positivity
+
 
     for value in positivity:
         global_average_positivity += value
