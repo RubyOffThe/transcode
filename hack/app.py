@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import render_template
-import random
+from textblob import TextBlob
 import threading
 import os
 import json
@@ -42,11 +42,10 @@ class ProcessingThread(threading.Thread):
                 positivity.append(ret_val)
 
 
-
-
 @app.route('/')
 def hello(name=None):
     global positivity
+    global global_average_positivity
 
     for value in positivity:
         global_average_positivity += value
@@ -57,13 +56,15 @@ def hello(name=None):
 
     negativity_percentage = 100- positivity_percentage
 
-    evalution_json = json.dumps([{'positive': positivity_percentage, 'negative': negativity_percentage}], separators=(','))
+    evalution_json = json.dumps(
+        [
+            {'positive': positivity_percentage,
+                'negative': negativity_percentage}
+        ], separators=(',')
+    )
 
+    return render_template('hello.html', sentiment=evalution_json  )
 
-
-
-
-    return render_template('hello.html', name=random.randint(1,1000), evalution_json  )
 
 if __name__ == '__main__':
     app.run()
