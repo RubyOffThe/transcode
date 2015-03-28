@@ -6,6 +6,7 @@ import os
 import json
 import logging
 import sys
+import re
 
 import tweet_collector
 
@@ -28,8 +29,8 @@ class ProcessingThread(threading.Thread):
         self.search_term = search_term
 
     def remove_non_ascii(tweet_text):
-    clean_tweet = re.sub(r'[^\x00-\x7f]+', '', tweet_text)
-    return clean_tweet
+        clean_tweet = re.sub(r'[^\x00-\x7f]+', '', tweet_text)
+        return clean_tweet
 
     def remove_punctuation(tweet_text):
         clean_tweet = re.sub('[%s]' % re.escape('!"$%&\'()*+,-./:;<=>?[\\]^_`{|}~'), '', tweet_text)
@@ -40,25 +41,25 @@ class ProcessingThread(threading.Thread):
         c = tweet_collector.Collect()
         c.connect()
         for tweet in c.stream(self.search_term):
-                text =tweet["text"]
-                text = remove_non_ascii(text)
-                text = remove_punctuation(text) 
+            text =tweet["text"]
+            text = self.remove_non_ascii(text)
+            text = self.remove_punctuation(text)
 
-                blob = TextBlob(text)
+            blob = TextBlob(text)
 
-                average_positivity = []
-                total_positivity = 0
+            average_positivity = []
+            total_positivity = 0
 
-                for sentence in blob.sentences:
-                    average_positivity.append(sentence.sentiment.polarity)
+            for sentence in blob.sentences:
+                average_positivity.append(sentence.sentiment.polarity)
 
-                for value in average_positivity:
-                    total_positivity += value
+            for value in average_positivity:
+                total_positivity += value
 
-                ret_val = total_positivity/len(average_positivity)
-                logger.debug("%s -- %s", tweet['text'], ret_val)
+            ret_val = total_positivity/len(average_positivity)
+            logger.debug("%s -- %s", tweet['text'], ret_val)
 
-                positivity.append(ret_val)
+            positivity.append(ret_val)
 
 
 @app.route('/')
