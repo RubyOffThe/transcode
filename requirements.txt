@@ -1,2 +1,4 @@
 twitter
 gunicorn
+flask
+textblob
