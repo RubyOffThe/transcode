@@ -1,4 +1,6 @@
-twitter
-gunicorn
 flask
+gunicorn
+pytest
+mock
 textblob
+twitter

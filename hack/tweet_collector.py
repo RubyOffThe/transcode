@@ -24,6 +24,18 @@ def remove_punctuation(tweet_text):
     return clean_tweet
 
 
+def average(series):
+
+    return sum(series) / len(series)
+
+
+def tweet_sentiment(tweet_text):
+    blob = TextBlob(remove_punctuation(remove_non_ascii(tweet_text)))
+    try:
+        return average([s.sentiment.polarity for s in blob.sentences])
+    except ZeroDivisionError:
+        return None
+
 
 class ProcessingThread(threading.Thread):
 
@@ -36,25 +48,8 @@ class ProcessingThread(threading.Thread):
         c = Collector()
         c.connect()
         for tweet in c.stream(self.search_term):
-            text = tweet["text"]
-            text = remove_non_ascii(text)
-            text = remove_punctuation(text)
-            print text
-
-            blob = TextBlob(text)
-
-            average_positivity = []
-            total_positivity = 0
-
-            for sentence in blob.sentences:
-                average_positivity.append(sentence.sentiment.polarity)
-
-            for value in average_positivity:
-                total_positivity += value
-
-            ret_val = total_positivity/len(average_positivity)
+            ret_val = tweet_sentiment(tweet['text'])
             logger.debug("%s -- %s", tweet['text'], ret_val)
-
             positivity.append(ret_val)
             print positivity
 
