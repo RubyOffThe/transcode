@@ -84,9 +84,18 @@ h1 small{
 	display:block;
 }
 
+/*bootstrap tweaks*/
+.col-xs-12{
+	box-sizing:border-box;
+}
+
+.row{
+	margin-left:0;
+	margin-right:0;
+}
+
 /*about box*/
 #openAboutText{
-	display: none;
 	position: absolute;
 	right:0;
 	bottom:0;
