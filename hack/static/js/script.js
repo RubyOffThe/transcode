@@ -1,5 +1,6 @@
 function showAbout(){
-	$("#aboutWrapper").show();
+	// $("#aboutWrapper").show();
+	$("#aboutWrapper").fadeIn(400);
 }
 
 function hideAbout(){

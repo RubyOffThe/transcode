@@ -90,8 +90,8 @@ h1 small{
 }
 
 .row{
-	margin-left:0;
-	margin-right:0;
+	margin-left:5px;
+	margin-right:5px;
 }
 
 /*about box*/
@@ -101,10 +101,6 @@ h1 small{
 	bottom:0;
 	margin:15px;
 	cursor:pointer;
-}
-#centreFloater{
-	float:left;
-	height:50%;
 }
 
 #aboutWrapper{
@@ -118,17 +114,40 @@ h1 small{
 
 	z-index: 999;
 	position: fixed;
+	/*background-color: rgba(0,0,0,0.8);*/
+	background-color: rgba(41,156,200,0.1);
+}
+
+#centreFloater{
+	float:left;
+	height:50%;
+
+	display none;
 }
 #about{
 	/*position:absolute;*/
-	clear:both;
+/*	clear:both;
 	margin:auto;
 	width:400px;
 	height:200px;
 	margin-top:-100px;
-	font-size: 24px;
-	background-color: rgba(0,0,0,0.8);
+*/	
+	
 	text-align: center;
+	
+	font-size: 18px;
+
+	position:fixed;
+	left:5%;
+	right:5%;
+	top:5%;
+	bottom:5%;
+	background-color: black;
+	border-radius: 12px;
+}
+
+h2{
+	font-size: 24px;
 }
 
 #about button{
