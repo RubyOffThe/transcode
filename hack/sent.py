@@ -18,6 +18,7 @@ def tweet_collector(text):
 	ret_val = total_positivity/len(average_positivity)
 
 	return ret_val
+         #test love from ruby :p
 
 
 
