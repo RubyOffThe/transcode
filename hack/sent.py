@@ -19,6 +19,6 @@ def tweet_collector(text):
 
 	return ret_val
          #test love from ruby :p
-
+        # test take two
 
 
