@@ -4,3 +4,4 @@ pytest
 mock
 textblob
 twitter
+psycopg2

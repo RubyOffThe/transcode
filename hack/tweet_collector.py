@@ -70,7 +70,7 @@ class Collector(object):
         try:
             atmosphere = self.ts.statuses.filter(track=search_term)
         except twitter.api.TwitterHTTPError:
-            time.sleep(60 * 5)
+            time.sleep(60 * 5)  # wait then restart
             raise
 
         for tweet in atmosphere:

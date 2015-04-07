@@ -20,6 +20,13 @@ app = Flask(__name__)
 
 app.debug = True
 
+TRACK_WORDS = [
+    'transgender',
+    'transexual',
+    'tranny',
+    'fafafine'
+]
+
 
 @app.route('/')
 def hello(name=None):
@@ -54,5 +61,5 @@ if __name__ == '__main__':
 
 
 if os.environ.get('WE_ARE_LIVE'):
-    pt = ProcessingThread('transgender OR tranny OR transexual')
+    pt = ProcessingThread(', '.join(TRACK_WORDS))
     pt.start()
