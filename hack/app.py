@@ -24,7 +24,18 @@ TRACK_WORDS = [
     'transgender',
     'transexual',
     'tranny',
-    'fafafine'
+    'trans*',
+    ##more specific terms
+    'genderqueer',
+    'bigender',
+    'neutrois'
+    ##international terms
+    'fafafine',
+    'hijra',
+    'kathoey',
+    'ladyboy',
+    'twospirit',
+    'two-spirit'
 ]
 
 
