@@ -28,7 +28,7 @@ TRACK_WORDS = [
     ##more specific terms
     'genderqueer',
     'bigender',
-    'neutrois'
+    'neutrois',
     ##international terms
     'fafafine',
     'hijra',
